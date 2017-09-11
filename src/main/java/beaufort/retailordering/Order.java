@@ -4,8 +4,11 @@ public class Order {
 	
 	private Receipt receipt;
 	private PriceList priceList;
+	private PaymentService paymentService;
 
 	public Receipt purchase(String sku, String paymentType) {
+
+		paymentService.authorize(new PaymentInfo(paymentType));
 		receipt.addSku(sku);
 		receipt.addPrice(priceList.getPrice(sku));
 		receipt.addPaymentType(paymentType);
@@ -28,5 +31,9 @@ public class Order {
 		// TODO Auto-generated method stub
 		return priceList;
 	}
+	public void setPaymentService(PaymentService paymentService) {
+		this.paymentService = paymentService;
+	}
+
 
 }

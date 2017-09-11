@@ -11,10 +11,16 @@ public class OrderTests {
 	String sku = "12345678";
 	String paymentType = "cash";
 	MockPriceList mockPriceList = new MockPriceList();
+	private PaymentService mockPaymentService;
+	
 	@Before
 	public void setUp() throws Exception {
 		order = new Order();
 		order.setReceipt(new MockReceipt());
+
+		mockPaymentService = new MockPaymentService();
+		order.setPaymentService(mockPaymentService);
+
 		mockPriceList = new MockPriceList();
 		mockPriceList.getPriceReturn = "$12.00";
 		order.setPriceList(mockPriceList);
@@ -49,5 +55,12 @@ public class OrderTests {
 		Receipt actualReceipt = order.purchase(sku, paymentType);
 		assertEquals("cash", ((MockReceipt)actualReceipt).addPaymentTypeString);
 	}
+	
+	@Test
+	public void purchase_callsPaymentService() {
+		order.purchase(sku, paymentType);
+		assertTrue(((MockPaymentService)mockPaymentService).paymentServiceGetsCalled);
+	}
+	
 
 }
