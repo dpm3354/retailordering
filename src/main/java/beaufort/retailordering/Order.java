@@ -7,8 +7,7 @@ public class Order {
 
 	public Receipt purchase(String sku, String paymentType) {
 		receipt.addSku(sku);
-		String price = priceList.getPrice(sku);
-		receipt.addPrice(price);
+		receipt.addPrice(priceList.getPrice(sku));
 		receipt.addPaymentType(paymentType);
 		return receipt;
 	}
