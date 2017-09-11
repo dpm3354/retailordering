@@ -17,7 +17,5 @@ public class OrderTests {
 	@Test
 	public void purchaseTest() {
 		assertNotNull(order.purchase("12345678"));
-		
 	}
-
 }
