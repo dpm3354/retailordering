@@ -5,10 +5,11 @@ public class Order {
 	private Receipt receipt;
 	private PriceList priceList;
 
-	public Receipt purchase(String sku) {
+	public Receipt purchase(String sku, String paymentType) {
 		receipt.addSku(sku);
 		String price = priceList.getPrice(sku);
-		receipt.addPrice("price");
+		receipt.addPrice(price);
+		receipt.addPaymentType(paymentType);
 		return receipt;
 	}
 	

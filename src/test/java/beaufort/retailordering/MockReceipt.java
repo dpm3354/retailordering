@@ -11,4 +11,9 @@ public class MockReceipt implements Receipt{
 	public void addPrice(String price) {
 		addPriceString = price;
 	}
+	
+	public String addPaymentTypeString;
+	public void addPaymentType(String paymentType) {
+		addPaymentTypeString = paymentType;
+	}
 }

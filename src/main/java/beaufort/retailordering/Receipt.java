@@ -6,4 +6,6 @@ public interface Receipt {
 
 	void addPrice(String string);
 
+	void addPaymentType(String string);
+
 }
