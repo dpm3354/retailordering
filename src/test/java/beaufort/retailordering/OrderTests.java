@@ -59,7 +59,7 @@ public class OrderTests {
 	@Test
 	public void purchase_callsPaymentService() {
 		order.purchase(sku, paymentType);
-		assertTrue(((MockPaymentService)mockPaymentService).paymentServiceGetsCalled);
+		assertTrue(((MockPaymentService)mockPaymentService).authorizeGetsCalled);
 	}
 	
 

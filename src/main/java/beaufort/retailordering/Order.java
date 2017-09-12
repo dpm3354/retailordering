@@ -28,7 +28,6 @@ public class Order {
 	}
 
 	public PriceList getPriceList() {
-		// TODO Auto-generated method stub
 		return priceList;
 	}
 	public void setPaymentService(PaymentService paymentService) {
