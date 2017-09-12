@@ -9,10 +9,12 @@ public class Order {
 	private DeliveryService deliveryService;
 
 	public Receipt purchase(String sku, String paymentType) {
-
-		if(!inventoryService.isInStock(sku))
+		if(!inventoryService.isInStock(sku)){
 			return null;
-		paymentService.authorize(new PaymentInfo(paymentType));
+		}
+		if(!paymentService.authorize(new PaymentInfo(paymentType)).contains("Confirmed")){
+			return null;
+		}
 		deliveryService.deliverOrder(this);
 		
 		receipt.addSku(sku);

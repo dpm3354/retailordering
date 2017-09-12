@@ -20,6 +20,7 @@ public class OrderTests {
 		order.setReceipt(new MockReceipt());
 
 		mockPaymentService = new MockPaymentService();
+		mockPaymentService.authorizeReturn = "Confirmed.";
 		order.setPaymentService(mockPaymentService);
 
 		mockPriceList = new MockPriceList();
