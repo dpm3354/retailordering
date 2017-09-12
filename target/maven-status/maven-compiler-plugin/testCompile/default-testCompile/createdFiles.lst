@@ -1,0 +1,6 @@
+beaufort/retailordering/MockInventoryService.class
+beaufort/retailordering/MockDeliveryService.class
+beaufort/retailordering/MockReceipt.class
+beaufort/retailordering/OrderTests.class
+beaufort/retailordering/MockPaymentService.class
+beaufort/retailordering/MockPriceList.class
