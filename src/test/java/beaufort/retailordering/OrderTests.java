@@ -5,16 +5,14 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-
-
-
 public class OrderTests {
 	Order order;
 	String sku = "12345678";
 	String paymentType = "cash";
 	MockPriceList mockPriceList = new MockPriceList();
-	private PaymentService mockPaymentService;
-	private MockInventoryService mockInventoryService;
+	MockPaymentService mockPaymentService;
+	MockInventoryService mockInventoryService;
+	MockDeliveryService mockDeliveryService;
 	
 	@Before
 	public void setUp() throws Exception {
@@ -31,6 +29,9 @@ public class OrderTests {
 		mockInventoryService = new MockInventoryService();
 		mockInventoryService.isInStockReturn = true;
 		order.setInventoryService(mockInventoryService);
+
+		mockDeliveryService = new MockDeliveryService();		
+		order.setDeliveryService(mockDeliveryService);
 	}
 
 	@Test
@@ -75,5 +76,10 @@ public class OrderTests {
 		assertTrue(((MockInventoryService)mockInventoryService).isInStockGetsCalled);
 	}
 	
+	@Test
+	public void purchase_callsDeliveryService() {
+		order.purchase(sku, paymentType);
+		assertTrue(((MockDeliveryService)mockDeliveryService).deliverGetsCalled);
+	}
 
 }

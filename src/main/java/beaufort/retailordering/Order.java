@@ -6,12 +6,15 @@ public class Order {
 	private PriceList priceList;
 	private PaymentService paymentService;
 	private InventoryService inventoryService;
+	private DeliveryService deliveryService;
 
 	public Receipt purchase(String sku, String paymentType) {
 
 		if(!inventoryService.isInStock(sku))
 			return null;
 		paymentService.authorize(new PaymentInfo(paymentType));
+		deliveryService.deliverOrder(this);
+		
 		receipt.addSku(sku);
 		receipt.addPrice(priceList.getPrice(sku));
 		receipt.addPaymentType(paymentType);
@@ -37,9 +40,12 @@ public class Order {
 		this.paymentService = paymentService;
 	}
 
-	public void setInventoryService(MockInventoryService inventoryService) {
+	public void setInventoryService(InventoryService inventoryService) {
 		this.inventoryService = inventoryService;
 	}
 
+	public void setDeliveryService(DeliveryService deliveryService) {
+		this.deliveryService = deliveryService;
+	}
 
 }
