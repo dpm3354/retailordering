@@ -6,12 +6,15 @@ import org.junit.Before;
 import org.junit.Test;
 
 
+
+
 public class OrderTests {
 	Order order;
 	String sku = "12345678";
 	String paymentType = "cash";
 	MockPriceList mockPriceList = new MockPriceList();
 	private PaymentService mockPaymentService;
+	private MockInventoryService mockInventoryService;
 	
 	@Before
 	public void setUp() throws Exception {
@@ -24,6 +27,10 @@ public class OrderTests {
 		mockPriceList = new MockPriceList();
 		mockPriceList.getPriceReturn = "$12.00";
 		order.setPriceList(mockPriceList);
+		
+		mockInventoryService = new MockInventoryService();
+		mockInventoryService.isInStockReturn = true;
+		order.setInventoryService(mockInventoryService);
 	}
 
 	@Test
@@ -60,6 +67,12 @@ public class OrderTests {
 	public void purchase_callsPaymentService() {
 		order.purchase(sku, paymentType);
 		assertTrue(((MockPaymentService)mockPaymentService).authorizeGetsCalled);
+	}
+	
+	@Test
+	public void purchase_callsInventoryService() {
+		order.purchase(sku, paymentType);
+		assertTrue(((MockInventoryService)mockInventoryService).isInStockGetsCalled);
 	}
 	
 
