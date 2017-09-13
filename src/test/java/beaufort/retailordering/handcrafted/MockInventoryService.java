@@ -1,4 +1,6 @@
-package beaufort.retailordering;
+package beaufort.retailordering.handcrafted;
+
+import beaufort.retailordering.InventoryService;
 
 public class MockInventoryService implements InventoryService {
 

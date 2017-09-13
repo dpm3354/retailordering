@@ -1,4 +1,7 @@
-package beaufort.retailordering;
+package beaufort.retailordering.handcrafted;
+
+import beaufort.retailordering.PaymentInfo;
+import beaufort.retailordering.PaymentService;
 
 public class MockPaymentService implements PaymentService{
 

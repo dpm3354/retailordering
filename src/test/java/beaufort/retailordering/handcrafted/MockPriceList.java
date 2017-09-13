@@ -1,4 +1,6 @@
-package beaufort.retailordering;
+package beaufort.retailordering.handcrafted;
+
+import beaufort.retailordering.PriceList;
 
 public class MockPriceList implements PriceList{
 

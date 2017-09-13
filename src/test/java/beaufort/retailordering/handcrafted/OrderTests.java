@@ -1,9 +1,12 @@
-package beaufort.retailordering;
+package beaufort.retailordering.handcrafted;
 
 import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import beaufort.retailordering.Order;
+import beaufort.retailordering.Receipt;
 
 public class OrderTests {
 	Order order;
