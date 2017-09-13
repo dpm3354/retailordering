@@ -1,6 +1,5 @@
 package beaufort.retailordering.mockito;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import org.junit.Before;
@@ -13,7 +12,6 @@ import beaufort.retailordering.PaymentInfo;
 import beaufort.retailordering.PaymentService;
 import beaufort.retailordering.PriceList;
 import beaufort.retailordering.Receipt;
-import beaufort.retailordering.handcrafted.MockReceipt;
 
 import static org.mockito.Mockito.*;
 
@@ -65,5 +63,35 @@ public class OrderTests {
 	public void purchase_receiptIncludesPriceTest() {
 		Receipt actualReceipt = order.purchase(sku, paymentType);
 		verify(actualReceipt, times(1)).addPrice("$12.00");
+	}
+	
+	@Test
+	public void purchase_getsPriceForSkuTest() {
+		order.purchase(sku, paymentType);
+		verify(mockPriceList, times(1)).getPrice(sku);
+	}
+	
+	@Test
+	public void purchase_receiptIncludesPaymentTypeTest() {
+		Receipt actualReceipt = order.purchase(sku, paymentType);
+		verify(actualReceipt, times(1)).addPaymentType("cash");
+	}
+	
+	@Test
+	public void purchase_callsPaymentService() {
+		order.purchase(sku, paymentType);
+		verify(mockPaymentService, times(1)).authorize(any(PaymentInfo.class));
+	}
+	
+	@Test
+	public void purchase_callsInventoryService() {
+		order.purchase(sku, paymentType);
+		verify(mockInventoryService, times(1)).isInStock(sku);
+	}
+	
+	@Test
+	public void purchase_callsDeliveryService() {
+		order.purchase(sku, paymentType);
+		verify(mockDeliveryService, times(1)).deliverOrder(any(Order.class));
 	}
 }
