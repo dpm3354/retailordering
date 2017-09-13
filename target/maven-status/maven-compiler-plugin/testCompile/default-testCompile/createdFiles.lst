@@ -1,6 +1,7 @@
-beaufort/retailordering/MockInventoryService.class
-beaufort/retailordering/MockDeliveryService.class
-beaufort/retailordering/MockReceipt.class
-beaufort/retailordering/OrderTests.class
-beaufort/retailordering/MockPaymentService.class
-beaufort/retailordering/MockPriceList.class
+beaufort/retailordering/handcrafted/MockReceipt.class
+beaufort/retailordering/handcrafted/MockPriceList.class
+beaufort/retailordering/handcrafted/MockDeliveryService.class
+beaufort/retailordering/mockito/OrderTests.class
+beaufort/retailordering/handcrafted/MockInventoryService.class
+beaufort/retailordering/handcrafted/MockPaymentService.class
+beaufort/retailordering/handcrafted/OrderTests.class

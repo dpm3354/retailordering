@@ -1,6 +1,7 @@
-/Users/dpm3354/working/workspace/retailordering/src/test/java/beaufort/retailordering/MockDeliveryService.java
-/Users/dpm3354/working/workspace/retailordering/src/test/java/beaufort/retailordering/MockPaymentService.java
-/Users/dpm3354/working/workspace/retailordering/src/test/java/beaufort/retailordering/MockPriceList.java
-/Users/dpm3354/working/workspace/retailordering/src/test/java/beaufort/retailordering/OrderTests.java
-/Users/dpm3354/working/workspace/retailordering/src/test/java/beaufort/retailordering/MockInventoryService.java
-/Users/dpm3354/working/workspace/retailordering/src/test/java/beaufort/retailordering/MockReceipt.java
+/Users/dpm3354/working/workspace/retailordering/src/test/java/beaufort/retailordering/handcrafted/MockPaymentService.java
+/Users/dpm3354/working/workspace/retailordering/src/test/java/beaufort/retailordering/handcrafted/MockPriceList.java
+/Users/dpm3354/working/workspace/retailordering/src/test/java/beaufort/retailordering/handcrafted/MockDeliveryService.java
+/Users/dpm3354/working/workspace/retailordering/src/test/java/beaufort/retailordering/handcrafted/MockReceipt.java
+/Users/dpm3354/working/workspace/retailordering/src/test/java/beaufort/retailordering/mockito/OrderTests.java
+/Users/dpm3354/working/workspace/retailordering/src/test/java/beaufort/retailordering/handcrafted/MockInventoryService.java
+/Users/dpm3354/working/workspace/retailordering/src/test/java/beaufort/retailordering/handcrafted/OrderTests.java

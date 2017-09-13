@@ -40,7 +40,7 @@ public class OrderTests {
 
 	@Test
 	public void purchaseTest() {
-		assertNotNull(order.purchase("12345678", paymentType));
+		assertNotNull(order.purchase(sku, paymentType));
 	}
 
 	@Test
