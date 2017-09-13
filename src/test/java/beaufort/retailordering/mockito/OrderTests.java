@@ -34,26 +34,22 @@ public class OrderTests {
 		order.setReceipt(mockReceipt);
 
 		mockPaymentService = mock(PaymentService.class);
+		when(mockPaymentService.authorize(any(PaymentInfo.class))).thenReturn("Confirmed.");
 		order.setPaymentService(mockPaymentService);
 
 		mockPriceList = mock(PriceList.class);
 		order.setPriceList(mockPriceList);
 
 		mockInventoryService = mock(InventoryService.class);
+		when(mockInventoryService.isInStock(sku)).thenReturn(true);
 		order.setInventoryService(mockInventoryService);
 
 		mockDeliveryService = mock(DeliveryService.class);
-		order.setDeliveryService(mockDeliveryService);
-
-		
+		order.setDeliveryService(mockDeliveryService);		
 	}
 
 	@Test
 	public void purchaseTest() {
-		when(mockInventoryService.isInStock(sku)).thenReturn(true);
-		PaymentInfo paymentInfo = new PaymentInfo("Confirmed.");
-		when(mockPaymentService.authorize(any(PaymentInfo.class))).thenReturn("Confirmed.");
-
 		assertNotNull(order.purchase(sku, paymentType));
 	}
 
