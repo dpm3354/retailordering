@@ -5,33 +5,40 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import beaufort.retailordering.DeliveryService;
+import beaufort.retailordering.InventoryService;
 import beaufort.retailordering.Order;
+import beaufort.retailordering.PaymentService;
+import beaufort.retailordering.PriceList;
 import beaufort.retailordering.Receipt;
 
 public class OrderTests {
 	Order order;
 	String sku = "12345678";
 	String paymentType = "cash";
-	MockPriceList mockPriceList = new MockPriceList();
-	MockPaymentService mockPaymentService;
-	MockInventoryService mockInventoryService;
-	MockDeliveryService mockDeliveryService;
+	Receipt mockReceipt;
+	PriceList mockPriceList;
+	PaymentService mockPaymentService;
+	InventoryService mockInventoryService;
+	DeliveryService mockDeliveryService;
 	
 	@Before
 	public void setUp() throws Exception {
 		order = new Order();
-		order.setReceipt(new MockReceipt());
+		
+		mockReceipt = new MockReceipt();
+		order.setReceipt(mockReceipt);
 
 		mockPaymentService = new MockPaymentService();
-		mockPaymentService.authorizeReturn = "Confirmed.";
+		((MockPaymentService)mockPaymentService).authorizeReturn = "Confirmed.";
 		order.setPaymentService(mockPaymentService);
 
 		mockPriceList = new MockPriceList();
-		mockPriceList.getPriceReturn = "$12.00";
+		((MockPriceList)mockPriceList).getPriceReturn = "$12.00";
 		order.setPriceList(mockPriceList);
 		
 		mockInventoryService = new MockInventoryService();
-		mockInventoryService.isInStockReturn = true;
+		((MockInventoryService)mockInventoryService).isInStockReturn = true;
 		order.setInventoryService(mockInventoryService);
 
 		mockDeliveryService = new MockDeliveryService();		

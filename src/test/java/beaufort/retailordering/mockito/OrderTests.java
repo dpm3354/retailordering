@@ -20,30 +20,32 @@ public class OrderTests {
 	Order order;
 	String sku = "12345678";
 	String paymentType = "cash";
-	InventoryService mockInventoryService;
-	PaymentService mockPaymentService;
-	DeliveryService mockDeliveryService;
 	Receipt mockReceipt;
-	private PriceList mockPriceList;
+	PriceList mockPriceList;
+	PaymentService mockPaymentService;
+	InventoryService mockInventoryService;
+	DeliveryService mockDeliveryService;
 
 	@Before
 	public void setUp() throws Exception {
 		order = new Order();
 
-		mockInventoryService = mock(InventoryService.class);
-		order.setInventoryService(mockInventoryService);
+		mockReceipt = mock(Receipt.class);
+		order.setReceipt(mockReceipt);
 
 		mockPaymentService = mock(PaymentService.class);
 		order.setPaymentService(mockPaymentService);
 
+		mockPriceList = mock(PriceList.class);
+		order.setPriceList(mockPriceList);
+
+		mockInventoryService = mock(InventoryService.class);
+		order.setInventoryService(mockInventoryService);
+
 		mockDeliveryService = mock(DeliveryService.class);
 		order.setDeliveryService(mockDeliveryService);
 
-		mockReceipt = mock(Receipt.class);
-		order.setReceipt(mockReceipt);
 		
-		mockPriceList = mock(PriceList.class);
-		order.setPriceList(mockPriceList);
 	}
 
 	@Test
