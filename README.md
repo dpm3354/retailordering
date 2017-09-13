@@ -18,7 +18,9 @@ code we'd write using TDD and Mocks.
 Watch the logs and the commits from the beginning until 9/12 to see how I went about adding features to this and testing the code
 before any functionality existed.
 
+
 ** Hand-crafted Mocks **
+
 The first iteration of this code (~ Sept 12, 2017) I wrote my own mocks. This was a practice I enjoyed many years ago before
 some of the great mocking frameworks (and dependency injection) were widespread.
 
@@ -28,6 +30,8 @@ They share members publically and they purposefully use side effects to achieve 
 
 See Michael Feather's great book "Working Effectively with Legacy Code" for where much of this came from.
 
+
 ** Other Mock Frameworks **
+
 It is my intention to add other mock frameworks in here to expose folks to those.
 
