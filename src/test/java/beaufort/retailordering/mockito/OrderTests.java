@@ -1,5 +1,6 @@
 package beaufort.retailordering.mockito;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import org.junit.Before;
@@ -12,7 +13,7 @@ import beaufort.retailordering.PaymentInfo;
 import beaufort.retailordering.PaymentService;
 import beaufort.retailordering.PriceList;
 import beaufort.retailordering.Receipt;
-
+import beaufort.retailordering.handcrafted.MockReceipt;
 
 import static org.mockito.Mockito.*;
 
@@ -38,6 +39,7 @@ public class OrderTests {
 		order.setPaymentService(mockPaymentService);
 
 		mockPriceList = mock(PriceList.class);
+		when(mockPriceList.getPrice(anyString())).thenReturn("$12.00");
 		order.setPriceList(mockPriceList);
 
 		mockInventoryService = mock(InventoryService.class);
@@ -52,5 +54,16 @@ public class OrderTests {
 	public void purchaseTest() {
 		assertNotNull(order.purchase(sku, paymentType));
 	}
+	
+	@Test
+	public void purchase_receiptIncludesSkuTest() {
+		Receipt actualReceipt = order.purchase(sku, paymentType);
+		verify(actualReceipt, times(1)).addSku(sku);
+	}
 
+	@Test
+	public void purchase_receiptIncludesPriceTest() {
+		Receipt actualReceipt = order.purchase(sku, paymentType);
+		verify(actualReceipt, times(1)).addPrice("$12.00");
+	}
 }
