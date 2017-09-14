@@ -5,7 +5,11 @@ D Paul Merrill of Beaufort Fairmont
 Catch the webinar "What's a Mock Object and How Do I Use It?" on 9/21/17 or find the recording at 
 http://BeaufortFairmont.com/webinars.
 
-My starting todo list was this:
+In order to demonstrate Mock Objects and how they can be created BEFORE the application code, I 
+needed an application to write. I decided to use a retail ordering system. My thinking was that 
+a system like this was familiar to many people.
+
+My starting todo list to make a purchase of an order was this:
 * give sku
 * get price
 * give payment type
@@ -13,11 +17,21 @@ My starting todo list was this:
 * manage inventory
 * set up delivery
 
-Each of these features are done using mocks. In other words, there is no working "retail ordering" system in this code. It
-is the code we'd write using TDD and Mocks. 
+Each of these todo items may have indications for classes outside of the Order class. But I'm only 
+concerned with the order class. For instance, should managing inventory be handled within an order?
+No. There's likely a service we use for that, so we need to mock that out in order to finish the order
+class and it's functionality. Same thing with delivery and authorizing payment. I've used mocks for 
+those other areas of functionality. 
 
-Watch the logs and the commits from the beginning until 9/12 to see how I went about adding features to this and testing 
-the code before any functionality existed.
+In typical development (using TDD as a mockist) the developer would finish the purchase method as I 
+have here and then start working on the other services. 
+
+If you followed what I described above, then you know there is no working "retail ordering" system 
+in this code. It is the code we'd write using TDD and Mocks for the purchase method only. 
+
+Take a look at the commit logs from the beginning until 9/12 to see how I went about adding features 
+to this and testing the code before any functionality existed. From late 9/12 until 9/13 I added another 
+OrderTests class that uses Mokito instead of hand-crafted mocks.
 
 
 
